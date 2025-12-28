@@ -1,0 +1,19 @@
+#Общие настройки Spring Boot.
+spring:
+  jackson:
+    serialization:
+      write-dates-as-timestamps: false
+    date-format: com.fasterxml.jackson.databind.util.StdDateFormat
+
+  #Общие настройки Kafka.
+  kafka:
+    bootstrap-servers: localhost:9092
+    properties:
+      spring.json.trusted.packages: '*'
+
+#Общие настройки логирования.
+logging:
+  level:
+    org.springframework.web: INFO
+    org.springframework.cloud: INFO
+    org.klimtsov: DEBUG
