@@ -1,0 +1,66 @@
+server:
+  port: 8082
+
+spring:
+  application:
+    name: notification-service
+
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: notification-group
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      auto-offset-reset: earliest
+      properties:
+        spring.json.trusted.packages: '*'
+        session.timeout.ms: 45000
+        heartbeat.interval.ms: 3000
+        max.poll.interval.ms: 300000
+        request.timeout.ms: 40000
+        default.api.timeout.ms: 60000
+        metadata.max.age.ms: 30000
+        allow.auto.create.topics: false
+
+  mail:
+    host: ${SMTP_HOST:smtp.gmail.com}
+    port: ${SMTP_PORT:587}
+    username: ${SMTP_USERNAME:}
+    password: ${SMTP_PASSWORD:}
+    properties:
+      mail.smtp.auth: true
+      mail.smtp.starttls.enable: true
+    default-encoding: UTF-8
+    from: ${SMTP_USERNAME:}
+
+#Кастомные настройки.
+notification:
+  email:
+    enabled: ${EMAIL_ENABLED:true}
+    mock: ${EMAIL_MOCK:true}
+    # true = только логирование, false = реальная отправка.
+
+#Swagger/OpenAPI
+springdoc:
+  api-docs:
+    enabled: true
+    path: /api-docs
+  swagger-ui:
+    enabled: true
+    path: /swagger-ui.html
+    operationsSorter: method
+    tagsSorter: alpha
+    disable-swagger-default-url: true
+  show-actuator: false
+  model-converters:
+    hal-converter:
+      enabled: true
+  default-produces-media-type: application/json
+  use-fqn: false
+
+#Logging
+logging:
+  level:
+    org.klimtsov.notification: DEBUG
+    org.springframework.kafka: WARN
+    org.apache.kafka: WARN
