@@ -30,6 +30,9 @@
         notification-service.yml # Специфичные настройки notification-service
 
 ---
+## Запуск
+    mvn spring-boot:run
+
 ## Проверка работоспособности
 1. Конфигурация user-service: http://localhost:8888/user-service/default
 2. Конфигурация notification-service: http://localhost:8888/notification-service/default
