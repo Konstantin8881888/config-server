@@ -1,0 +1,19 @@
+#Тестовые настройки для Config Server.
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          enabled: false  #Полностью отключаем Git.
+        native:
+          search-locations: classpath:/config-repo-test
+  #Отключаем Eureka в тестах.
+  main:
+    allow-bean-definition-overriding: true
+
+#Тестовый профиль не должен регистрироваться в Eureka.
+eureka:
+  client:
+    enabled: false
+    fetch-registry: false
+    register-with-eureka: false
