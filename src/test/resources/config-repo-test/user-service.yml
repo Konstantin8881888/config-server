@@ -1,0 +1,10 @@
+server:
+  port: 9999
+
+spring:
+  application:
+    name: user-service-test
+
+test:
+  property: test-value
+  config: loaded-successfully

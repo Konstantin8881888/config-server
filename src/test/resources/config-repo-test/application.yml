@@ -1,0 +1,11 @@
+server:
+  port: 0  #Случайный порт для тестов.
+
+spring:
+  cloud:
+    config:
+      server:
+        native:
+          search-locations: classpath:/config-repo-test
+  security:
+    enabled: false  #Отключаем безопасность для тестов. Её нет, но на всякий случай отключим.
