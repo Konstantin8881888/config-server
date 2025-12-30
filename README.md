@@ -1,4 +1,4 @@
-# Config Server - External Configuration
+# Config Server - Внешняя конфигурация
 
 Централизованный сервер конфигураций для микросервисной архитектуры на базе Spring Cloud Config.
 
